@@ -1,0 +1,57 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AppUser {
+  id: ID!
+  Name: String!
+  LastName: String!
+  username: String!
+  email: String
+  emailVerified: Boolean!
+  IsMilitar: Boolean!
+  isTemporal: Boolean!
+  TimeCreate: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  healthCheck: String!
+}
+
+type Mutation {
+  registerUser(input: CreateAppUserDto!): AppUser!
+}
+
+input CreateAppUserDto {
+  username: String!
+  password: String!
+  Name: String!
+  LastName: String!
+  IsMilitar: Boolean! = false
+  isTemporal: Boolean! = false
+  email: String
+  document: CreateUserDocumentDto!
+  contact: CreateContactInfoDto!
+}
+
+input CreateUserDocumentDto {
+  Document: String!
+  TypeDocumentID: Int!
+  PlaceExpedition: String!
+  DateExpedition: String!
+}
+
+input CreateContactInfoDto {
+  Address: String!
+  City: String!
+  Phone: String!
+  CelPhone: String!
+  EmergencyName: String!
+  EmergencyPhone: String!
+  CountryID: Int!
+}
