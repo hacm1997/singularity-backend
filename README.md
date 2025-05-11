@@ -6,6 +6,12 @@
 $ yarn install
 ```
 
+Configure de Envirotments, create a .env file in the root path app, with variable:
+
+DATABASE_URL={{value}}
+
+Remplace {{value}} for the envirotment value
+
 ## Running the app
 
 ```bash
