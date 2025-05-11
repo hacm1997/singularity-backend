@@ -15,7 +15,7 @@ export class TypeDocumentResolver {
   }
 
   @Query(() => [TypeDocument])
-  typeDocuments(): Promise<TypeDocument[]> {
+  TypeDocuments(): Promise<TypeDocument[]> {
     return this.typeDocService.findAll();
   }
 }

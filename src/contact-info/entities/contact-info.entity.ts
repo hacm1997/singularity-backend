@@ -45,10 +45,15 @@ export class ContactInfo {
   @Column()
   UserID: number;
 
-  @OneToOne(() => AppUser, (user) => user.contact)
+  @Field()
+  @Column()
+  CountryID: number;
+
+  @OneToOne(() => AppUser, (user: AppUser) => user.contact)
   @JoinColumn({ name: 'UserID' })
   user: AppUser;
 
+  @Field(() => Country)
   @ManyToOne(() => Country)
   @JoinColumn({ name: 'CountryID' })
   country: Country;

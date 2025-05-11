@@ -54,10 +54,12 @@ export class AppUser {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   TimeCreate: Date;
 
-  @OneToOne(() => UserDocument, (doc) => doc.user, { cascade: true })
-  @JoinColumn({ name: 'id', referencedColumnName: 'UserID' })
+  @Field(() => UserDocument)
+  @OneToOne(() => UserDocument, (document) => document.user)
+  // @JoinColumn({ name: 'id', referencedColumnName: 'UserID' })
   document: UserDocument;
 
-  @OneToOne(() => ContactInfo, (contact) => contact.user, { cascade: true })
+  @Field(() => ContactInfo, { nullable: true })
+  @OneToOne(() => ContactInfo, (contact) => contact.user)
   contact: ContactInfo;
 }

@@ -16,7 +16,9 @@ export class UserDocument {
   @PrimaryColumn()
   UserID: number;
 
-  @OneToOne(() => AppUser, (user) => user.document)
+  // @OneToOne(() => AppUser, (user) => user.document)
+  // user: AppUser;
+  @OneToOne(() => AppUser, (user: AppUser) => user.document)
   @JoinColumn({ name: 'UserID' })
   user: AppUser;
 
@@ -24,6 +26,7 @@ export class UserDocument {
   @Column({ length: 20 })
   Document: string;
 
+  @Field(() => TypeDocument)
   @ManyToOne(() => TypeDocument)
   @JoinColumn({ name: 'TypeDocumentID' })
   typeDocument: TypeDocument;
@@ -33,6 +36,6 @@ export class UserDocument {
   PlaceExpedition: string;
 
   @Field()
-  @Column({ type: 'date' })
-  DateExpedition: Date;
+  @Column({ length: 20 })
+  DateExpedition: string;
 }
